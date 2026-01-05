@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <title>ETRUE COVER</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+</head>
+<body>
+
+    <!-- ==================== UI 核心层 (遮罩/光标) ==================== -->
+    <div id="status-bar-mask"></div>
+    <div id="loading-mask"></div>
+    <div id="custom-cursor">
+        <span class="cursor-text"></span>
+    </div>
+
+    <!-- ==================== 移动端全屏菜单 (双视图) ==================== -->
+    <div id="mobile-menu-overlay">
+        <!-- 视图 1: 主菜单 -->
+        <div class="mobile-view view-main" data-lenis-prevent>
+            <div class="mobile-menu-links">
+                <a href="index.html">
+                    <span class="en">HOME</span><span class="cn">首页</span>
+                </a>
+                <!-- 点击去产品视图 -->
+                <a href="#" id="mobile-to-products">
+                    <span class="en">PRODUCTS</span><span class="cn">产品</span>
+                    <span class="arrow-right"></span>
+                </a>
+                <!-- 品牌资讯手风琴 -->
+                <div class="accordion-wrapper" id="mobile-info-trigger">
+                    <div class="accordion-title">
+                        <span class="en">INFORMATION</span><span class="cn">品牌</span>
+                        <span class="arrow-down"></span>
+                    </div>
+                    <div class="mobile-info-content">
+                        <div class="min-h-wrapper">
+                            <div class="accordion-text">
+                                <div class="en">
+                                    <p>ETRUE COVER is an art coating brand driven by "Artistic Aesthetics" and centered around the concept of "Touch Coverage."<br>
+                                    "ETRUE" (meaning "one touch") embodies the ultimate pursuit of material expression—where the moment fingertips meet the surface, touch becomes a dialogue between the brand and the experiencer.<br>
+                                    "COVER" symbolizes the infinite possibilities of spatial renewal, with every brushstroke serving as a reinterpretation of architectural space.</p>
+                                </div>
+                                <div class="cn">
+                                    <p>ETRUE COVER是一个以“触感覆盖”为核心、以“艺术审美”为驱动的艺术涂料品牌。<br>
+                                    “ETRUE”（一触），凝结着对材质表现的极致追求——当指尖与材质表面相遇时，触感即是品牌与体验者的对话。<br>
+                                    “COVER”（覆盖），则象征着空间焕新的无限可能，每一笔涂刷都是对建筑空间的二次创作。</p>
+                                </div>
+                            </div>
+                            <div class="accordion-contact">
+                                <p>info@ETRUECOVER.com</p>
+                                <p>+86 159 2805 2306</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 视图 2: 产品菜单 -->
+        <div class="mobile-view view-products" data-lenis-prevent>
+            <div class="mobile-menu-links">
+                <!-- Back 按钮 -->
+                <div class="back-btn-wrapper" id="mobile-back-btn">
+                    <span class="back-icon"></span>
+                    <span class="en">Back</span><span class="cn">返回</span>
+                </div>
+
+                <!-- Browse by Product (JS生成内容) -->
+                <div class="accordion-wrapper outer-accordion">
+                    <div class="accordion-title">
+                        <span class="en">Browse by Product</span><span class="cn">按产品浏览</span>
+                        <span class="arrow-down"></span>
+                    </div>
+                    <div class="mobile-info-content">
+                        <div class="min-h-wrapper">
+                            <div id="mobile-list-artistic-container"></div>
+                            <div id="mobile-list-nano-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 其他链接 -->
+                <a href="color-selection.html">
+                    <span class="en">Browse by Color</span><span class="cn">按颜色浏览</span>
+                    <span class="arrow-right"></span>
+                </a>
+                <a href="bespoke.html">
+                    <span class="en">ETRUE Bespoke</span><span class="cn">高定系列</span>
+                    <span class="arrow-right"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 桌面端面板 (Info & Products) ==================== -->
+    
+    <!-- Information 面板 -->
+    <section id="info-panel" class="desktop-panel">
+        <div class="info-content-wrapper">
+            <div class="info-col-img">
+                <img src="assets/images/info_visual.png" alt="Brand Visual" class="panel-image">
+            </div>
+            <div class="info-col-text">
+                <div class="info-header-new">
+                    <img src="assets/images/icon_brand_01.png" alt="Icon" class="info-icon">
+                    <h1 class="info-title-new">
+                        <span class="en">ABOUT ETRUE COVER</span>
+                        <span class="cn">关于 ETRUE COVER</span>
+                    </h1>
+                    <img src="assets/images/icon_brand_02.png" alt="Icon" class="info-icon">
+                </div>
+                <div class="info-body-new">
+                    <div class="en">
+                        <p>ETRUE COVER is an art coating brand driven by "Artistic Aesthetics" and centered around the concept of "Touch Coverage."<br>
+                        "ETRUE" (meaning "one touch") embodies the ultimate pursuit of material expression—where the moment fingertips meet the surface, touch becomes a dialogue between the brand and the experiencer.<br>
+                        "COVER" symbolizes the infinite possibilities of spatial renewal, with every brushstroke serving as a reinterpretation of architectural space.</p>
+                    </div>
+                    <div class="cn">
+                        <p>ETRUE COVER是一个以“触感覆盖”为核心、以“艺术审美”为驱动的艺术涂料品牌。<br>
+                        “ETRUE”（一触），凝结着对材质表现的极致追求——当指尖与材质表面相遇时，触感即是品牌与体验者的对话。<br>
+                        “COVER”（覆盖），则象征着空间焕新的无限可能，每一笔涂刷都是对建筑空间的二次创作。</p>
+                    </div>
+                </div>
+                <div class="info-footer-new">
+                    <div class="contact-list">
+                        <div class="contact-row">
+                            <span class="label">EMAIL</span>
+                            <span class="value">info@ETRUECOVER.com</span>
+                        </div>
+                        <div class="contact-row">
+                            <span class="label">TEL</span>
+                            <span class="value">+86 159 2805 2306</span>
+                        </div>
+                    </div>
+                    <div class="close-btn-wrapper">
+                        <div class="close-btn action-close-panel">
+                            <span class="en">Close</span><span class="cn">关闭</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products 面板 -->
+    <section id="products-panel" class="desktop-panel">
+        <!-- Col 1: Tabs -->
+        <div class="prod-col col-1">
+            <div class="main-tabs">
+                <div class="p-tab-item active" id="tab-browse-product">
+                    <span class="en">Browse by Product</span><span class="cn">按产品浏览</span>
+                </div>
+                <a href="color-selection.html" class="p-tab-item" id="tab-browse-color">
+                    <span class="en">Browse by Color</span>
+                    <span class="cn">按颜色浏览</span>
+                </a>
+                <a href="bespoke.html" class="p-tab-item" id="tab-bespoke">
+                    <span class="en">ETRUE Bespoke</span>
+                    <span class="cn">高定系列</span>
+                </a>
+            </div>
+            <div class="col-1-spacer"></div>
+        </div>
+
+        <!-- Col 2: Sub-Categories -->
+        <div class="prod-col col-2">
+            <div class="sub-cat-list">
+                <div class="cat-item active" data-filter="all">
+                    <span class="en">All Finish</span><span class="cn">全部饰面</span>
+                </div>
+                <div class="cat-item" data-filter="artistic">
+                    <span class="en">Artistic Cement</span><span class="cn">艺术水泥</span>
+                </div>
+                <div class="cat-item" data-filter="nano">
+                    <span class="en">Nano-Ceramic COVER</span><span class="cn">金刚瓷釉</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Col 3: Grid (JS 生成) -->
+        <div class="prod-col col-3">
+            <div class="prod-grid" id="desktop-prod-grid" data-lenis-prevent></div>
+            <div class="prod-footer">
+                <div class="close-btn action-close-panel">
+                    <span class="en">Close</span><span class="cn">关闭</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 导航与加载条 ==================== -->
+    <div class="logo-container">
+        <a href="index.html" class="logo-link">
+            <img src="assets/images/graphic_logo.png" alt="Brand Logo" class="graphic-logo">
+            <img src="assets/images/text_logo.png" alt="Brand Name" class="text-logo"> 
+        </a>
+    </div>
+
+    <nav class="nav-links">
+        <a href="index.html" class="desktop-only"><span class="en">HOME</span><span class="cn">首页</span></a>
+        <a href="#" id="products-trigger" class="desktop-only action-open-panel" data-target="products-open"><span class="en">PRODUCTS</span><span class="cn">产品</span></a>
+        <a href="#" id="info-trigger" class="desktop-only action-open-panel" data-target="info-open"><span class="en">INFORMATION</span><span class="cn">资讯</span></a>
+        
+        <!-- 语言切换 -->
+        <a href="#" id="lang-switch-desktop" class="desktop-only lang-btn">中</a>
+        <a href="#" id="lang-switch-mobile" class="mobile-lang-btn">
+            <span class="en">中</span><span class="cn">EN</span>
+        </a>
+        
+        <div class="hamburger-btn" id="hamburger-btn">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <div class="loader-bar" id="loader-bar">
+        <span class="loading-text">LOADING</span>
+        <span class="loading-percent" id="loading-num">0%</span>
+    </div>
+
+    <!-- ==================== 页面主体内容 ==================== -->
+    <div id="page-wrapper">
+        <main id="content" class="hidden-content">
+            <!-- Hero Video -->
+            <section class="hero-section">
+                <video autoplay muted loop playsinline>
+                    <source src="assets/videos/top_hero.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"></div> 
+                <div class="scroll-indicator">
+                    <span class="scroll-text">SCROLL</span>
+                    <span class="scroll-arrow"></span>
+                </div>
+            </section>
+
+            <!-- Text Section -->
+            <section class="split-text-section">
+                <div class="h-line-wrapper"><div class="h-line scroll-anim"></div></div>
+                <div class="split-content">
+                    <div class="text-full scroll-anim">
+                        <p class="en">ETRUE COVER products are not merely decorative materials but a medium that bridges practical needs and artistic expression. We strive to make every covering act an enhancement of spatial value, streamlining decision-making processes for property owners and expanding creative options for designers.</p>
+                        <p class="cn">ETRUE COVER的产品不仅是装饰材料，更是连接实用需求与艺术表达的介质。我们致力于让每个覆盖动作都成为空间的价值增量，让业主的选择更高效且省心，让设计师有更多创作选择。</p>
+                    </div>
+                </div>
+                <div class="h-line-wrapper extra-margin"><div class="h-line scroll-anim bottom-delay"></div></div>
+            </section>
+
+            <!-- Product Showcase List -->
+            <section class="product-list">
+                <!-- Item 1 -->
+                <div class="product-item">
+                    <div class="inner-box" style="width: 80%;">
+                        <div class="img-wrapper" style="aspect-ratio: 1/1;">
+                            <a href="artistic-cement.html" class="img-link">
+                                <img src="assets/images/in_cover_01.png" class="main-img" alt="Product">
+                            </a>
+                        </div>
+                        <div class="product-info"><h3><span class="en">Artistic Cement</span><span class="cn">艺术水泥</span></h3>
+                            <div class="color-swatches">
+                                <span class="swatch" style="background-color: #f4f1eb;" data-img="assets/images/cover_AC01C01.jpg" data-link="artistic-cement.html"></span>
+                                <span class="swatch" style="background-color: #e7e1d2;" data-img="assets/images/cover_AC01W01.jpg" data-link="artistic-cement.html"></span>
+                                <span class="swatch" style="background-color: #f4f0e8;" data-img="assets/images/cover_AC02C01.jpg" data-link="artistic-cement.html"></span>
+                                <span class="swatch" style="background-color: #abced9;" data-img="assets/images/cover_AC07B01.jpg" data-link="artistic-cement.html"></span>
+                            </div>
+                            <p class="product-desc">
+                                <span class="en">Through rough yet breathable textures, we offer a simple and genuine tactile experience, telling the story of imperfect perfection.</span>
+                                <br>
+                                <span class="cn">通过粗砺且富有呼吸感的肌理，提供一种质朴而真实的触感，讲述不完美的完美。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="product-item" style="margin-bottom: 120px;">
+                    <div class="inner-box" style="width: 100%;">
+                        <div class="img-wrapper" style="aspect-ratio: 1/1;">
+                            <img src="assets/images/in_cover_02.jpg" class="main-img" alt="Product Image">
+                        </div>
+                        <div class="product-info"><h3><span class="en">Nano-Ceramic COVER</span><span class="cn">金刚瓷釉</span></h3>
+                            <div class="color-swatches">
+                                <span class="swatch" style="background-color: #f1f0e8;" data-img="assets/images/cover_AC01C01.jpg"></span>
+                                <span class="swatch" style="background-color: #eae6d9;" data-img="assets/images/cover_AC01W01.jpg"></span>
+                                <span class="swatch" style="background-color: #c4b184;" data-img="assets/images/cover_AC02C01.jpg"></span>
+                                <span class="swatch" style="background-color: #bcc1a8;" data-img="assets/images/cover_AC07B01.jpg"></span>
+                                <span class="swatch" style="background-color: #a7c5d0;" data-img="assets/images/cover_AC07B01.jpg"></span>
+                            </div>
+                            <p class="product-desc">
+                                <span class="en">The uniquely smooth texture feels as gentle as skin while offering robust protection. The ease of application itself embodies the democratization of artistry.</span>
+                                <br>
+                                <span class="cn">独特的滑腻触感，如肌肤般温润，同时具备强大的防护力。施工的便捷性本身，就是其艺术民主化的体现。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                 <div class="product-item" style="margin-bottom: 80px;">
+                    <div class="inner-box" style="width: 100%;">
+                        <div class="img-wrapper" style="aspect-ratio: 1/1;">
+                            <img src="assets/images/in_cover_03.jpg" class="main-img" alt="Product Image">
+                        </div>
+                        <div class="product-info"><h3><span class="en">ETRUE Microcement</span><span class="cn">微水泥</span></h3>
+                            <div class="color-swatches">
+                                <span class="swatch" style="background-color: #f4f1eb;" data-img="assets/images/cover_AC01C01.jpg"></span>
+                                <span class="swatch" style="background-color: #e7e1d2;" data-img="assets/images/cover_AC01W01.jpg"></span>
+                            </div>
+                            <p class="product-desc">
+                                <span class="en">Delivering a silky-smooth, seamless continuous touch, where vision and tactile sensation extend in unison, redefining the holistic integrity of space.</span>
+                                <br>
+                                <span class="cn">提供如丝般顺滑、无缝的连续触感，视觉与触觉共同延伸，重塑空间的整体性。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                 <div class="product-item">
+                    <div class="inner-box" style="width: 80%;">
+                        <div class="img-wrapper" style="aspect-ratio: 1/1;">
+                            <img src="assets/images/in_cover_04.jpg" class="main-img" alt="Product Image">
+                        </div>
+                        <div class="product-info"><h3><span class="en">ETRUE Bespoke</span><span class="cn">高定系列</span></h3>
+                            <div class="color-swatches">
+                                <span class="swatch" style="background-color: #f4f1eb;" data-img="assets/images/cover_AC01C01.jpg"></span>
+                                <span class="swatch" style="background-color: #e7e1d2;" data-img="assets/images/cover_AC01W01.jpg"></span>
+                                <span class="swatch" style="background-color: #f4f0e8;" data-img="assets/images/cover_AC02C01.jpg"></span>
+                                <span class="swatch" style="background-color: #abced9;" data-img="assets/images/cover_AC07B01.jpg"></span>
+                            </div>
+                            <p class="product-desc">
+                                <span class="en">Here, tactile sensation becomes a fully customizable personal emblem—the singular embodiment of the brand's spirit and the client's personal will.</span>
+                                <br>
+                                <span class="cn">触感在此成为完全自定义的私人符号，是品牌精神与客户个人意志的唯一体现。</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Brand Video -->
+            <section class="video-section scroll-anim">
+                <div class="video-wrapper">
+                    <video autoplay muted loop playsinline>
+                        <source src="assets/videos/brand_video.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="scroll-anim">
+            <div class="footer-col col-left">
+                <p class="en label">CONTACT US</p>
+                <p class="cn label">联系我们</p>
+                <p>info@ETRUECOVER.com</p>
+                <p>+86 159 2805 2306</p>
+            </div>
+            <div class="footer-col col-center">
+                <p>&copy; 2025 ETRUE COVER.</p>
+                <p>ALL RIGHTS RESERVED.</p>
+            </div>
+            <div class="footer-col col-right">
+                <p class="en label">ADDRESS</p>
+                <p class="cn label">地址</p>
+                <p class="en">No. 2385, South Section of Tianfu Avenue<br>Chengdu, China</p>
+                <p class="cn">四川，成都<br>天府新区天府大道南段2385号</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
